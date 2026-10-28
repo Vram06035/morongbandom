@@ -1,0 +1,27 @@
+:root{--bg:#0d1117;--pane:#151b23;--line:#262f3b;--txt:#e6edf3;--mut:#8b98a8;--acc:#7c5cff;--bb:#7c5cff;--cx:#10a37f;--boss:#f0883e}
+*{box-sizing:border-box}body{margin:0;display:flex;height:100vh;background:var(--bg);color:var(--txt);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer;background:var(--acc);border:0;border-radius:8px;padding:7px 14px;color:#fff}button:disabled{opacity:.4;cursor:not-allowed}
+#side{width:300px;background:var(--pane);border-right:1px solid var(--line);padding:16px;overflow:auto;flex-shrink:0}
+.brand{display:flex;gap:10px;align-items:center;margin-bottom:18px}.logo{font-size:22px;background:linear-gradient(135deg,var(--acc),var(--cx));border-radius:10px;width:40px;height:40px;display:grid;place-items:center}
+small{color:var(--mut);display:block;font-size:12px}h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:18px 0 8px}
+ul{list-style:none;margin:0;padding:0}.agents li{display:flex;gap:10px;align-items:center;padding:6px 4px;position:relative}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;flex-shrink:0}.av.bb{background:var(--bb)}.av.cx{background:var(--cx)}.av.boss{background:var(--boss)}
+.dot{position:absolute;right:6px;width:8px;height:8px;border-radius:50%;background:#3fb950}
+.filters{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}.filters button{background:transparent;border:1px solid var(--line);padding:3px 9px;font-size:12px;color:var(--mut)}.filters .act{background:var(--line);color:var(--txt)}
+#tasks li{padding:10px;border-radius:10px;cursor:pointer;margin-bottom:4px;border:1px solid transparent;position:relative}#tasks li:hover{background:#1c2430}#tasks li.sel{background:#1f2633;border-color:var(--acc)}
+#tasks li .badge{position:absolute;right:8px;bottom:9px}#tasks .none{color:var(--mut);cursor:default}
+.badge{font-size:11px;padding:1px 8px;border-radius:99px;font-weight:600;vertical-align:middle}.s-open{background:#1f6feb33;color:#58a6ff}.s-in-progress{background:#d2992233;color:#e3b341}.s-done{background:#23863633;color:#3fb950}.s-blocked{background:#da363333;color:#f85149}
+main{flex:1;display:flex;flex-direction:column;min-width:0}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--pane)}header h2{margin:0;font-size:17px}
+.tools{display:flex;gap:8px;align-items:center}.tools span{color:var(--mut);font-size:12px}.tools button{background:var(--line)}.spin{opacity:.6}
+#thread{flex:1;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:18px}
+.empty,.typing{color:var(--mut);text-align:center;margin:auto}.typing{margin:0;font-style:italic;text-align:left;padding-left:46px}
+.msg{display:flex;gap:12px;max-width:820px}.msg.cx{flex-direction:row-reverse;align-self:flex-end}
+.bub{background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:10px 14px;min-width:0}.msg.bb .bub{border-top-left-radius:4px;border-color:#7c5cff55}.msg.cx .bub{border-top-right-radius:4px;border-color:#10a37f55}
+.meta{font-size:12px;color:var(--mut);margin-bottom:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.meta b{color:var(--txt)}.file{font-family:monospace;opacity:.7}
+.body p{margin:4px 0}.body code{background:#0d1117;padding:1px 5px;border-radius:4px;font-size:12.5px}.body pre{background:#0d1117;padding:10px;border-radius:8px;overflow:auto}.body .lbl{color:#c9b8ff;font-weight:600}.msg.cx .lbl{color:#56d4b0}.body a{color:#58a6ff}
+#compose{border-top:1px solid var(--line);padding:14px 22px;background:var(--pane);display:flex;flex-direction:column;gap:8px}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+input,textarea,select{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}#compose select{width:auto}textarea{resize:vertical}
+dialog{background:var(--pane);color:var(--txt);border:1px solid var(--line);border-radius:14px;width:420px}dialog label{display:block;margin:10px 0 4px;font-size:13px}dialog::backdrop{background:#0008}.ghost{background:var(--line)}
+@media(max-width:760px){body{flex-direction:column}#side{width:auto;max-height:40vh}}

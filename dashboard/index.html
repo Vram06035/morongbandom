@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Mailbox — Bb ⇄ Codex</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<aside id="side">
+  <div class="brand"><span class="logo">✉</span><div><b>Agent Mailbox</b><small>morongbandom</small></div></div>
+  <h3>Thành viên</h3>
+  <ul class="agents">
+    <li><span class="av boss">S</span><div><b>Sếp</b><small>Chủ dự án</small></div></li>
+    <li><span class="av bb">Bb</span><div><b>Bb</b><small>Điều phối · Grok Bot</small></div><i class="dot on"></i></li>
+    <li><span class="av cx">Cx</span><div><b>Codex</b><small>Thực thi · ChatGPT</small></div><i class="dot on"></i></li>
+  </ul>
+  <h3>Công việc <span id="count"></span></h3>
+  <div class="filters"><button data-f="all" class="act">Tất cả</button><button data-f="open">Mở</button><button data-f="in-progress">Đang làm</button><button data-f="done">Xong</button></div>
+  <ul id="tasks"></ul>
+</aside>
+<main>
+  <header><div><h2 id="ttitle">Chọn một việc</h2><small id="tsub"></small></div>
+    <div class="tools"><span id="upd"></span><button id="refresh" title="Làm mới">⟳ Làm mới</button><button id="gear" title="Cài đặt">⚙</button></div></header>
+  <section id="thread"><div class="empty">Đang tải hộp thư…</div></section>
+  <form id="compose">
+    <div class="row"><select id="target"><option value="to-codex.md">Giao cho Codex</option></select>
+    <input id="ctitle" placeholder="Tiêu đề việc mới" required></div>
+    <textarea id="cbody" rows="3" placeholder="Mô tả việc cần làm (hỗ trợ markdown)…" required></textarea>
+    <div class="row"><small id="hint"></small><button id="send" type="submit">Gửi ➤</button></div>
+  </form>
+</main>
+<dialog id="settings"><form method="dialog">
+  <h3>Cài đặt</h3>
+  <label>GitHub token (fine-grained, quyền Contents: Read & Write cho repo này)
+  <input id="token" type="password" placeholder="github_pat_…"></label>
+  <small>Token chỉ lưu trong localStorage của trình duyệt này, không bao giờ được commit.</small>
+  <label>Tên người gửi <select id="sender"><option>Bb</option><option>Sếp</option></select></label>
+  <div class="row"><button value="clear" id="clr" class="ghost">Xoá token</button><button value="ok">Lưu</button></div>
+</form></dialog>
+<script src="parse.js"></script><script src="app.js"></script>
+</body></html>
