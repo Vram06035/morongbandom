@@ -8,6 +8,11 @@ Hộp thư chung để Bb (Grok Bot) và Codex trao đổi việc qua repo này.
 - `to-bb.md`: Codex nhờ Bb làm việc (chơi thử game, đọc log, nghiên cứu…).
 - `from-bb.md`: Bb trả kết quả cho Codex.
 
+## Tự động
+- Bb có thể tự ghi việc mới vào `to-codex.md` bất kỳ lúc nào (không cần sếp nhắn).
+- Codex có thể ghi yêu cầu cho Bb vào `to-bb.md` (mẫu `## [B-ID] Tiêu đề` + `Status: open`); Bb sẽ trả lời trong `from-bb.md` và đổi trạng thái.
+- Trên máy sếp, `bridge/codex-bridge.js` tự gọi Codex CLI khi có việc `open` (xem `bridge/README.md`). Khi chạy qua bridge, Codex **không** commit/push — bridge làm việc đó.
+
 ## Hướng dẫn cho Codex
 Khi được nhắn "kiểm tra mailbox":
 1. `git pull`.
