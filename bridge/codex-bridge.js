@@ -67,19 +67,22 @@ function buildPrompt(id) {
     `Do NOT run git commit or git push; the bridge will commit for you.`;
 }
 
-function runCodex(id) {
-  const prompt = buildPrompt(id);
+function runCodexPrompt(prompt, id) {
   let r;
   if (process.env.CODEX_CMD) {
     r = spawnSync(process.env.CODEX_CMD, { cwd: ROOT, shell: true, stdio: 'inherit', env: { ...process.env, BRIDGE_PROMPT: prompt, BRIDGE_TASK_ID: id } });
-  } else if (IS_WIN) {
-    r = spawnSync(`codex exec --full-auto "${prompt}"`, { cwd: ROOT, shell: true, stdio: 'inherit' });
   } else {
-    r = spawnSync('codex', ['exec', '--full-auto', prompt], { cwd: ROOT, stdio: 'inherit' });
+    // Only fixed arguments pass through cmd.exe; mailbox text goes via stdin.
+    r = spawnSync(IS_WIN ? 'codex.cmd' : 'codex', ['exec', '--sandbox', 'workspace-write', '-'], {
+      cwd: ROOT, shell: IS_WIN, input: prompt, encoding: 'utf8',
+      stdio: ['pipe', 'inherit', 'inherit']
+    });
   }
   if (r.error) throw r.error;
   return r.status;
 }
+
+function runCodex(id) { return runCodexPrompt(buildPrompt(id), id); }
 
 function acquireLock() {
   try {
@@ -132,5 +135,5 @@ function main() {
   if (!once) setInterval(loop, interval * 1000);
 }
 
-module.exports = { parseEntries, setStatus, buildPrompt };
+module.exports = { parseEntries, setStatus, buildPrompt, runCodexPrompt };
 if (require.main === module) main();
